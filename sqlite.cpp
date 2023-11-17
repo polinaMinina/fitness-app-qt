@@ -16,7 +16,7 @@ void SQLite::connectToSql()
 #ifdef QT_NO_DEBUG
     QString dbSource("fitness.db");
 #else
-    QString dbSource("C:\\Users\\Alex\\Documents\\build-fitness_widget-Desktop_Qt_5_15_0_MinGW_32_bit-Debug\\debug\\fitness.db");
+    QString dbSource("C:/Users/MSI Prestige/Documents/sqlite_db/fitness_db");
 #endif
 
     db.setDatabaseName(dbSource);

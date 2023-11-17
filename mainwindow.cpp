@@ -7,7 +7,7 @@
 #include "sqlite.h"
 #include "Calendar.h"
 #include "profiler.h"
-//#include "dumbellframe.h"
+#include "dumbellframe.h"
 #include "clickablecross.h"
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -16,10 +16,10 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->textBrowserWeight->hide();
-//    ui->lbTitle->setText(windowTitle());
+    ui->lbTitle->setText(windowTitle());
     ui->calendarLabel->setText(calendarMonth.toUpper());
 
-//    connect(ui->btnQuit, &QPushButton::clicked, qApp, &QApplication::quit);
+    connect(ui->btnQuit, &QPushButton::clicked, qApp, &QApplication::quit);
     connectToSqlDatabase();
 
     frame = createCalendarDialogFrame();
@@ -106,10 +106,14 @@ void MainWindow::highlightCurrentDay()
 void MainWindow::mouseMoveEvent(QMouseEvent* e)
 {
     if(e->buttons() & Qt::LeftButton) {
-        QPointF pos = e->position();
+        QPoint globalCursorPos = e->globalPosition().toPoint();
+
+        int newX = globalCursorPos.x() - dx;
+        int newY = globalCursorPos.y() - dy;
+
         setGeometry(
-            static_cast<int>(pos.x()) + e->position().x() - dx,
-            static_cast<int>(pos.y()) + e->position().y() - dy,
+            newX,
+            newY,
             width(),
             height()
             );
@@ -119,12 +123,15 @@ void MainWindow::mouseMoveEvent(QMouseEvent* e)
 void MainWindow::mousePressEvent(QMouseEvent* e)
 {
     if(e->button() == Qt::LeftButton) {
-        QPointF pos = e->position();
-        dx = static_cast<int>(pos.x());
-        dy = static_cast<int>(pos.y());
+        QPoint globalCursorPos = e->globalPosition().toPoint();
+
+        dx = globalCursorPos.x() - this->x();
+        dy = globalCursorPos.y() - this->y();
+
         setCursor(Qt::ArrowCursor);
     }
 }
+
 
 void MainWindow::connectToSqlDatabase()
 {
