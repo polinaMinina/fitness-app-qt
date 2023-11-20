@@ -39,33 +39,8 @@
      <enum>Qt::TabFocus</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
-    <widget class="QWidget" name="tab_2">
-     <attribute name="title">
-      <string>Dumbells</string>
-     </attribute>
-     <layout class="QGridLayout" name="gridLayout_6">
-      <item row="1" column="0">
-       <widget class="QStackedWidget" name="stackedWidget">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="currentIndex">
-         <number>0</number>
-        </property>
-        <widget class="QWidget" name="page_2"/>
-        <widget class="QWidget" name="page"/>
-        <widget class="QWidget" name="page_3"/>
-        <widget class="QWidget" name="page_4"/>
-        <widget class="QWidget" name="page_5"/>
-       </widget>
-      </item>
-     </layout>
-    </widget>
     <widget class="QWidget" name="tabWidgetPage1">
      <attribute name="title">
       <string>Weight</string>
@@ -651,6 +626,31 @@
           </layout>
          </item>
         </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Dumbells</string>
+     </attribute>
+     <layout class="QGridLayout" name="gridLayout_6">
+      <item row="1" column="0">
+       <widget class="QStackedWidget" name="stackedWidget">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <widget class="QWidget" name="page_2"/>
+        <widget class="QWidget" name="page"/>
+        <widget class="QWidget" name="page_3"/>
+        <widget class="QWidget" name="page_4"/>
+        <widget class="QWidget" name="page_5"/>
        </widget>
       </item>
      </layout>

@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "auth_window.h"
 
 #include <QApplication>
 #include <QLocale>
@@ -26,11 +27,23 @@ int main(int argc, char *argv[])
             break;
         }
     }
-    MainWindow w;
-    w.show();
+
     qApp->setStyle(QStyleFactory::create("Fusion"));
     darkPalette palette;
     auto darkPollete = palette.setDarkPalette();
     qApp->setPalette(darkPollete);
+
+    Auth_window auth;
+    if (auth.exec() == QDialog::Accepted) {
+        MainWindow w;
+        w.show();
+        return a.exec();
+    } else {
+        return 0;
+    }
+
+    MainWindow w;
+    w.show();
+
     return a.exec();
 }
