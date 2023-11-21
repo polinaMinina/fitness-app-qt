@@ -96,6 +96,8 @@ private slots:
 
     void on_dips_tabBarClicked(int index);
 
+    void changeTheme();
+
 private:
     Ui::MainWindow *ui;
     QString calendarMonth;
@@ -115,6 +117,9 @@ private:
     int dy;
     QChart *chart;
     QSize size;
+    QString lightTheme;
+    QString darkTheme;
+
 };
 
 #endif // MAINWINDOW_H

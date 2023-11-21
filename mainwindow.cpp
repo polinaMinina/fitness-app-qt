@@ -60,6 +60,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->page_2->setLayout(pageLayout);
     dumbellsLayout->setAlignment(Qt::AlignTop);
     dumbellsLayout->addWidget(dumbellFrame, dumbellFramesCounterRows, dumbellFramesCounterCols);
+
+
+    lightTheme = "QPushButton { background-color: white; color: black; }";
+    darkTheme = "QPushButton { background-color: black; color: white; }";
+
+    connect(ui->themeChangeButton, &QPushButton::clicked, this, &MainWindow::changeTheme);
 }
 
 
@@ -553,6 +559,16 @@ void MainWindow::on_dips_tabBarClicked(int index)
         showChart(chart, ui->chartW_dips);
         break;
     }
+}
+
+void MainWindow::changeTheme() {
+    static bool isDarkTheme = false;
+    if (isDarkTheme) {
+        qApp->setStyleSheet(lightTheme);
+    } else {
+        qApp->setStyleSheet(darkTheme);
+    }
+    isDarkTheme = !isDarkTheme;
 }
 
 

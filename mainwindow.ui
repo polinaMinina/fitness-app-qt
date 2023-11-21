@@ -740,6 +740,19 @@
      </item>
     </layout>
    </widget>
+   <widget class="QPushButton" name="themeChangeButton">
+    <property name="geometry">
+     <rect>
+      <x>952</x>
+      <y>30</y>
+      <width>111</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Change Theme</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
