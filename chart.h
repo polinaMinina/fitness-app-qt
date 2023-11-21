@@ -4,6 +4,6 @@
 #include <QtCharts>
 #include "sqlite.h"
 
-QChart* createChart(SQLite& sql, const QString& typeOfTrain);
+QChart* createChart(SQLite& sql, const QString& typeOfTrain, bool isDarkTheme);
 
 #endif // CHART_H

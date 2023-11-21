@@ -117,8 +117,7 @@ private:
     int dy;
     QChart *chart;
     QSize size;
-    QString lightTheme;
-    QString darkTheme;
+    bool isDarkTheme = true;
 
 };
 

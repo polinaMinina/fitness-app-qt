@@ -39,7 +39,7 @@
      <enum>Qt::TabFocus</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="tabWidgetPage1">
      <attribute name="title">
@@ -368,19 +368,6 @@
       <string>Dips</string>
      </attribute>
      <layout class="QGridLayout" name="gridLayout_5">
-      <item row="1" column="0">
-       <widget class="QChartView" name="chartW_dips" native="true">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>0</height>
-         </size>
-        </property>
-        <property name="autoFillBackground">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="0">
        <layout class="QHBoxLayout" name="horizontalLayout_9">
         <item>
@@ -446,6 +433,19 @@
          </widget>
         </item>
        </layout>
+      </item>
+      <item row="1" column="0">
+       <widget class="QChartView" name="chartW_dips" native="true">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
@@ -740,7 +740,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QPushButton" name="themeChangeButton">
+   <widget class="QPushButton" name="changeThemeButton">
     <property name="geometry">
      <rect>
       <x>952</x>

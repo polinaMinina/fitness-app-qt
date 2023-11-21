@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "auth_window.h"
+#include "darkpalette.h"
 
 #include <QApplication>
 #include <QLocale>
@@ -12,7 +13,7 @@
 #include <QLabel>
 #include <chrono>
 #include <iostream>
-#include "darkpalette.h"
+
 
 int main(int argc, char *argv[])
 {
@@ -30,8 +31,9 @@ int main(int argc, char *argv[])
 
     qApp->setStyle(QStyleFactory::create("Fusion"));
     darkPalette palette;
-    auto darkPollete = palette.setDarkPalette();
-    qApp->setPalette(darkPollete);
+    auto darkPalette = palette.setDarkPalette();
+    qApp->setPalette(darkPalette);
+
 
     Auth_window auth;
     if (auth.exec() == QDialog::Accepted) {

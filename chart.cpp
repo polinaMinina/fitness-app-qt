@@ -5,7 +5,7 @@
 #include <QSqlQuery>
 
 
-QChart* createChart(SQLite& sql, const QString& typeOfTrain)
+QChart* createChart(SQLite& sql, const QString& typeOfTrain, bool isDarkTheme)
 {
     auto query = sql.showSqlData(typeOfTrain);
     QLineSeries* series = new QLineSeries();
@@ -35,7 +35,13 @@ QChart* createChart(SQLite& sql, const QString& typeOfTrain)
     chart->addAxis(axisX, Qt::AlignBottom);
     series->attachAxis(axisX);
 
-    chart->setTheme(QChart::ChartThemeDark);
+
+    if (isDarkTheme) {
+        chart->setTheme(QChart::ChartThemeDark);
+    } else {
+        chart->setTheme(QChart::ChartThemeLight);
+    }
+//    chart->setTheme(QChart::ChartThemeDark);
     chart->setTitle(typeOfTrain.toUpper());
     chart->setAnimationOptions(QChart::AllAnimations);
     return chart;

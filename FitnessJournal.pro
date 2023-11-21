@@ -10,11 +10,11 @@ CONFIG += c++17
 
 SOURCES += \
     auth_window.cpp \
-    calendar.cpp \
     chart.cpp \
     clickablecross.cpp \
     darkpalette.cpp \
     dumbellframe.cpp \
+    lightpalette.cpp \
     main.cpp \
     mainwindow.cpp \
     profiler.cpp \
@@ -24,11 +24,12 @@ SOURCES += \
 
 HEADERS += \
     auth_window.h \
-    calendar.h \
+    calendar_planner.h \
     chart.h \
     clickablecross.h \
     darkpalette.h \
     dumbellframe.h \
+    lightpalette.h \
     mainwindow.h \
     profiler.h \
     reg_window.h \

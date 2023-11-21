@@ -9,10 +9,12 @@
 #include "profiler.h"
 #include "dumbellframe.h"
 #include "clickablecross.h"
+#include "darkpalette.h"
+#include "lightpalette.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent, Qt::Window | Qt::FramelessWindowHint),
-    ui(new Ui::MainWindow), dx( 0 ), dy( 0 )
+    ui(new Ui::MainWindow), dx( 0 ), dy( 0 ), isDarkTheme(true)
 {
     ui->setupUi(this);
     ui->textBrowserWeight->hide();
@@ -44,6 +46,10 @@ MainWindow::MainWindow(QWidget *parent) :
     fontForPages.setPixelSize(15);
     pages->setFont(fontForPages);
 
+    QVBoxLayout *mainLayout = new QVBoxLayout();
+    ui->centralwidget->setLayout(mainLayout);
+
+
     QHBoxLayout* dumButtons = new QHBoxLayout();
     dumButtons->addWidget(btnLeft);
     dumButtons->addWidget(pages, 10, Qt::AlignCenter);
@@ -61,11 +67,8 @@ MainWindow::MainWindow(QWidget *parent) :
     dumbellsLayout->setAlignment(Qt::AlignTop);
     dumbellsLayout->addWidget(dumbellFrame, dumbellFramesCounterRows, dumbellFramesCounterCols);
 
+    connect(ui->changeThemeButton, &QPushButton::clicked, this, &MainWindow::changeTheme);
 
-    lightTheme = "QPushButton { background-color: white; color: black; }";
-    darkTheme = "QPushButton { background-color: black; color: white; }";
-
-    connect(ui->themeChangeButton, &QPushButton::clicked, this, &MainWindow::changeTheme);
 }
 
 
@@ -233,35 +236,35 @@ void MainWindow::on_Add_dips_clicked()
 
 void MainWindow::on_show_weight_clicked()
 {
-    QChart* chart = createChart(sql, "weight");
+    QChart* chart = createChart(sql, "weight", this->isDarkTheme);
     showChart(chart, ui->chartW);
 }
 
 
 void MainWindow::on_show_pushups_clicked()
 {
-    QChart* chart = createChart(sql, "pushups");
+    QChart* chart = createChart(sql, "pushups", this->isDarkTheme);
     showChart(chart, ui->chartW_2);
 }
 
 
 void MainWindow::on_show_pullups_clicked()
 {
-    QChart* chart = createChart(sql, "pullups");
+    QChart* chart = createChart(sql, "pullups", this->isDarkTheme);
     showChart(chart, ui->chartW_3);
 }
 
 
 void MainWindow::on_show_squats_clicked()
 {
-    QChart* chart = createChart(sql, "squats");
+    QChart* chart = createChart(sql, "squats", this->isDarkTheme);
     showChart(chart, ui->chartW_4);
 }
 
 
 void MainWindow::on_show_dips_clicked()
 {
-    QChart* chart = createChart(sql, "dips");
+    QChart* chart = createChart(sql, "dips", this->isDarkTheme);
     showChart(chart, ui->chartW_dips);
 }
 
@@ -539,36 +542,41 @@ void MainWindow::on_dips_tabBarClicked(int index)
     QChart* chart;
     switch (index) {
     case 0:
-        chart = createChart(sql, "weight");  // change
+        chart = createChart(sql, "weight", this->isDarkTheme);  // change
         showChart(chart, ui->chartW);
         break;
     case 1:
-        chart = createChart(sql, "pushups");
+        chart = createChart(sql, "pushups", this->isDarkTheme);
         showChart(chart, ui->chartW_2);
         break;
     case 2:
-        chart = createChart(sql, "pullups");
+        chart = createChart(sql, "pullups", this->isDarkTheme);
         showChart(chart, ui->chartW_3);
         break;
     case 3:
-        chart = createChart(sql, "squats");
+        chart = createChart(sql, "squats", this->isDarkTheme);
         showChart(chart, ui->chartW_4);
         break;
     case 4:
-        chart = createChart(sql, "dips");
+        chart = createChart(sql, "dips", this->isDarkTheme);
         showChart(chart, ui->chartW_dips);
         break;
     }
 }
 
 void MainWindow::changeTheme() {
-    static bool isDarkTheme = false;
-    if (isDarkTheme) {
-        qApp->setStyleSheet(lightTheme);
+//    static bool isDarkTheme = true;
+    if (this->isDarkTheme) {
+        lightPalette palette;
+        auto lightPalette = palette.setLightPalette();
+        qApp->setPalette(lightPalette);
     } else {
-        qApp->setStyleSheet(darkTheme);
+        darkPalette palette;
+        auto darkPalette = palette.setDarkPalette();
+        qApp->setPalette(darkPalette);
     }
-    isDarkTheme = !isDarkTheme;
+    this->isDarkTheme = !(this->isDarkTheme);
+//    refreshCharts();
 }
 
 

@@ -22,6 +22,7 @@ Auth_window::Auth_window(QWidget *parent) :
                               "Unable to establish a database connection.", QMessageBox::Cancel);
         return;
     }
+    ui->loginButton->setDefault(true);
 
 }
 
