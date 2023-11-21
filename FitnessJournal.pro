@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     auth_window.cpp \
+    calendar.cpp \
     chart.cpp \
     clickablecross.cpp \
     darkpalette.cpp \
@@ -24,6 +25,7 @@ SOURCES += \
 
 HEADERS += \
     auth_window.h \
+    calendar.h \
     calendar_planner.h \
     chart.h \
     clickablecross.h \
